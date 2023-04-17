@@ -18,6 +18,14 @@ export default function Home() {
         setImages([...images, newFox]);
     };
 
+    const handleClick = () => {
+        console.log("Nice fox huh?");
+    };
+
+    const handleLoaded = (node: HTMLImageElement): void => {
+        console.log("Cargada" + node);
+    };
+
     return (
         <div>
             <header className="titleFox">
@@ -28,9 +36,10 @@ export default function Home() {
                 {images.map((i) => (
                     <div className="p-4" key={i.id}>
                         <LazyImg
-                            image={i.url}
+                            src={i.url}
+                            onLazyLoad={handleLoaded}
                             className="rounded bg-gray-300 w-80 h-auto"
-                            onClick={() => console.log("A")}
+                            onClick={handleClick}
                         />
                     </div>
                 ))}
